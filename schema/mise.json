@@ -2056,21 +2056,37 @@
       "additionalProperties": {
         "oneOf": [
           {
-            "description": "script to run",
+            "description": "inline hook command to run",
             "type": "string"
           },
           {
             "unevaluatedProperties": false,
             "properties": {
-              "script": {
-                "description": "script to run",
+              "run": {
+                "description": "inline hook command to run",
                 "type": "string"
               },
               "shell": {
-                "description": "specify the shell to run the script inside of",
+                "description": "inline shell command to use for run hooks, such as \"bash -c\"",
                 "type": "string"
               }
             },
+            "required": ["run"],
+            "type": "object"
+          },
+          {
+            "unevaluatedProperties": false,
+            "properties": {
+              "script": {
+                "description": "current-shell script for enter/leave/cd hooks",
+                "type": "string"
+              },
+              "shell": {
+                "description": "current shell name for script hooks, such as \"bash\"",
+                "type": "string"
+              }
+            },
+            "required": ["script"],
             "type": "object"
           },
           {
@@ -2089,21 +2105,37 @@
             "items": {
               "oneOf": [
                 {
-                  "description": "script to run",
+                  "description": "inline hook command to run",
                   "type": "string"
                 },
                 {
                   "unevaluatedProperties": false,
                   "properties": {
-                    "script": {
-                      "description": "script to run",
+                    "run": {
+                      "description": "inline hook command to run",
                       "type": "string"
                     },
                     "shell": {
-                      "description": "specify the shell to run the script inside of",
+                      "description": "inline shell command to use for run hooks, such as \"bash -c\"",
                       "type": "string"
                     }
                   },
+                  "required": ["run"],
+                  "type": "object"
+                },
+                {
+                  "unevaluatedProperties": false,
+                  "properties": {
+                    "script": {
+                      "description": "current-shell script for enter/leave/cd hooks",
+                      "type": "string"
+                    },
+                    "shell": {
+                      "description": "current shell name for script hooks, such as \"bash\"",
+                      "type": "string"
+                    }
+                  },
+                  "required": ["script"],
                   "type": "object"
                 },
                 {
