@@ -1654,6 +1654,14 @@ const completionSpec: Fig.Spec = {
             "Update mise.local.lock instead of mise.lock\nUse for tools defined in .local.toml configs",
           isRepeatable: false,
         },
+        {
+          name: "--minimum-release-age",
+          description: "Only lock versions released before this age or date",
+          isRepeatable: false,
+          args: {
+            name: "minimum_release_age",
+          },
+        },
       ],
       args: {
         name: "tool",
@@ -1755,6 +1763,14 @@ const completionSpec: Fig.Spec = {
           name: "--all",
           description: "Show all installed plugins and versions",
           isRepeatable: false,
+        },
+        {
+          name: "--minimum-release-age",
+          description: "Only show versions released before this age or date",
+          isRepeatable: false,
+          args: {
+            name: "minimum_release_age",
+          },
         },
         {
           name: ["-J", "--json"],

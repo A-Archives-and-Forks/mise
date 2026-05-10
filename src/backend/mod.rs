@@ -1088,7 +1088,7 @@ pub trait Backend: Debug + Send + Sync {
     /// Backend-specific fast path for the absolute latest stable version.
     ///
     /// Do not call this from CLI/toolset code. Use `latest_version` instead so
-    /// `minimum_release_age` / `--before` cutoffs are handled around this fast path.
+    /// release-date cutoffs are handled around this fast path.
     ///
     /// Return `Ok(None)` when the backend does not have a fast path result.
     /// `latest_version` centrally falls back to the shared version-list path,
@@ -1106,7 +1106,7 @@ pub trait Backend: Debug + Send + Sync {
     /// `ToolVersion::resolve_version` uses this as a last resort after normal
     /// latest resolution fails, and only when the backend's unfiltered remote
     /// version list is empty. If remote versions exist but are all filtered out by
-    /// `minimum_release_age` / `--before`, this hook is not used.
+    /// a release-date cutoff, this hook is not used.
     fn unresolved_latest_version(&self) -> Option<String> {
         None
     }
@@ -1270,7 +1270,7 @@ pub trait Backend: Debug + Send + Sync {
                 // Warn if no versions have timestamps
                 if filtered.iter().all(|v| v.created_at.is_none()) && !filtered.is_empty() {
                     debug!(
-                        "Backend {} does not provide release dates; --before filter may not work as expected",
+                        "Backend {} does not provide release dates; release-date filter may not work as expected",
                         self.id()
                     );
                 }
