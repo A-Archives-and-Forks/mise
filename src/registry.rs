@@ -1,7 +1,7 @@
 use crate::backend::backend_type::BackendType;
 use crate::cli::args::BackendArg;
 use crate::config::Settings;
-use crate::toolset::ToolVersionOptions;
+use crate::toolset::{RawBackendOptions, ToolVersionOptions};
 use heck::ToShoutySnakeCase;
 use indexmap::IndexMap;
 use std::collections::{BTreeSet, HashMap, HashSet};
@@ -171,7 +171,7 @@ impl RegistryTool {
         }
 
         ToolVersionOptions {
-            opts,
+            opts: RawBackendOptions::from(opts),
             ..Default::default()
         }
     }
