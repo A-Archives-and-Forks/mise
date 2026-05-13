@@ -5381,6 +5381,7 @@ dependencies = [
  "signal-hook 0.4.4",
  "siphasher",
  "strum 0.28.0",
+ "supports-hyperlinks",
  "sys-info",
  "tabled",
  "taplo",
